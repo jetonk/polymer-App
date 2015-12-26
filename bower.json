@@ -1,0 +1,16 @@
+{
+  "name": "assignment",
+  "authors": [
+    "jetonkadrija <jk17162@seeu.edu.mk>",
+    "besnikameti <ba18545@seeu.edu.mk>"
+  ],
+  "description": "assignment 2",
+  "main": "index",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.2.0",
+    "google-feeds": "GoogleWebComponents/google-feeds#~1.0.1"
+  }
+}

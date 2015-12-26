@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="dom-elements/menu.html">
+    <link rel="import" href="dom-elements/header.html">
+    <link rel="import" href="bower_components/google-feeds/google-feeds.html">
+    <title>News App</title>
+</head>
+<body>
+    <app-header></app-header>
+    <app-menu></app-menu>
+
+    <!-- Find feeds -->
+    <google-feeds query="computers" id="feedSearch"></google-feeds>
+
+    <!-- Multiple feeds query -->
+    <google-feeds id="feeder"></google-feeds>
+
+    <div></div>
+    <style>
+        .gfc-result {
+            margin-bottom: .5em;
+            background-color: #16a085;
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+        }
+    </style>
+    <script>
+        window.addEventListener('google-feeds-response', function(e) {
+            console.log(e.detail.feed);
+        });
+        window.addEventListener('google-feeds-queryresponse', function(e) {
+            console.log('findFeeds response:', e.detail.entries);
+        });
+
+        var feeder = document.getElementById("feeder");
+        function getFeeds(category){
+            feeder.feeds = ['http://feeds.bbci.co.uk/news/'+category+'/rss.xml'];
+        }
+        getFeeds('');
+    </script>
+</body>
+</html>

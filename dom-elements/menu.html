@@ -1,0 +1,48 @@
+<link rel="import"
+      href="../bower_components/polymer/polymer.html">
+
+<dom-module id="app-menu">
+
+    <template>
+        <div id="menu" class="menu">
+            <div id="">Top Stories</div>
+            <div id="business">Business</div>
+            <div id="politics">Politics</div>
+            <div id="health">Health</div>
+            <div id="science_and_environment">Science</div>
+            <div id="technology">Technology</div>
+            <div id="magazine">Magazine</div>
+        </div>
+    </template>
+    <style>
+        .menu{
+            font-size: 35px;
+            padding-top: 70px;
+            padding-bottom: 50px;
+            padding-left: 1%;
+        }
+        .menu div{
+            display: inline-block;
+            background-color: #9b59b6;
+            color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .menu div:hover{
+            background-color: #8e44ad;
+        }
+    </style>
+    <script>
+        Polymer({
+            is: "app-menu",
+            listeners: {
+                'tap': 'regularTap'
+            },
+            regularTap: function(e){
+                var category = e.target.id;
+                getFeeds(category);
+            }
+        });
+    </script>
+</dom-module>

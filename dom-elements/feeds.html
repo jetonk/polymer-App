@@ -1,0 +1,40 @@
+<link rel="import" href="../bower_components/google-feeds/google-feeds.html">
+<!-- Find feeds -->
+<dom-module id="app-feeds">
+    <template>
+<google-feeds query="computers" id="feedSearch"></google-feeds>
+
+<!-- Multiple feeds query -->
+<google-feeds id="feeder"></google-feeds>
+
+<div></div>
+        </template>
+<style>
+    .gfc-result {
+        margin-bottom: .5em;
+        background-color: #16a085;
+        color: #ffffff;
+        border-radius: 16px;
+        padding: 25px;
+    }
+    .gfc-result a{
+        color: black;
+    }
+</style>
+<script>
+    Polymer({
+        is: "app-feeds"
+    });
+    //var msg = document.querySelector('div');
+    window.addEventListener('google-feeds-response', function(e) {
+        //msg.innerHTML += e.target.localName + ' loaded' + '<br>';
+        console.log(e.detail.feed);
+    });
+    window.addEventListener('google-feeds-queryresponse', function(e) {
+        console.log('findFeeds response:', e.detail.entries);
+    });
+    var feeder = document.getElementById("feeder");
+    feeder.feeds = ['https://news.ycombinator.com/rss',
+        'http://feeds.bbci.co.uk/news/rss.xml'];
+</script>
+    </dom-module>
